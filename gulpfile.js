@@ -15,7 +15,7 @@ gulp.task("styles", function() {
     return gulp.src("styles/app.less")
         .pipe(less({ style: "expanded" }))
         .pipe(autoprefixer({
-            browsers: ["last 5 version", "ff >= 21", "safari >= 4", "ie >= 8", "opera 12.1", "ios >= 5", "android >= 3"],
+            browsers: ["last 5 version", "ff >= 26", "safari >= 4", "ie >= 9", "opera 12.1", "ios >= 6", "android >= 3"],
             cascade: true
         }))
         .pipe(gulp.dest("styles/"))
