@@ -2,6 +2,8 @@
 .gitignore
 .*
 ~*
+node_modules
+npm-debug.log
 node_modeles/*.*
 config/*.yml
 !.gitignore
