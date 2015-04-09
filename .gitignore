@@ -2,7 +2,7 @@
 .gitignore
 .*
 ~*
-node_modeles/
+node_modeles/*.*
 config/*.yml
 !.gitignore
 !*.example
