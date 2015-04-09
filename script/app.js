@@ -101,4 +101,12 @@
                 }
             }
         };
+    window.valera = {
+        css: css,
+        extend: extend,
+        isClassInElement: isClassInElement,
+        removeClass: removeClass,
+        addClass: addClass,
+        createElemet: createElement
+    }
 })(document, window);

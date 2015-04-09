@@ -10,8 +10,21 @@
     <meta name="format-detection" content="email=no">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Example</title>
-    <link rel="stylesheet" href="./styles/app.css" type="text/css" charset="utf-8">
-    <script src="./script/app.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="./styles/app.min.css" type="text/css" charset="utf-8">
+    <script src="./script/app.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./script/loader.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./bower_components/js-xls/xls.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<body></body>
+<body>
+<div class="middle_cont">
+    <div class="central_text">AQer</div>
+    <button class="central_button">Start test</button>
+</div>
+<script>
+    window.onload = function(){
+        valera.addClass(document.querySelector(".central_text"), "active");
+        valera.addClass(document.querySelector(".central_button"), "active");
+    }
+</script>
+</body>
 </html>
