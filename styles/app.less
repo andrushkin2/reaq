@@ -1,7 +1,23 @@
 @translateX: 2000px;
 @colorCentralText: #e0fdff;
 @bodyBackground: rgb(33, 87, 140);
+@defaulColor: #434343;
 
+.defaulStyle(){
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
 
 html, body {
   height: 100%;
@@ -13,20 +29,47 @@ html, body {
   background-color: @bodyBackground;
   font-family: arial;
   font-size: 1em;
+  color: @defaulColor;
   font-style: normal;
   text-align: center;
 }
 
+button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
+  .defaulStyle;
+}
+
+.button{
+  border: 1px solid;
+  width: 150px;
+  height: 50px;
+  font-size: 22px;
+}
+
 .middle_cont{
-  width: 100%;
-  height: auto;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   top: 50%;
   margin-top: -75px;
 
+  &.active{
+    transition: all 1s;
+    transition-delay: 2s;
+    border: 1px solid @colorCentralText;
+    border-radius: 10px;
+    box-shadow: 0px 0px 60px 1px #368fe5;
+  }
+
+
+  .middle_button_block{
+    padding-bottom: 50px;
+  }
+
   .central_text{
     opacity: 0;
     transform: translate(@translateX, 0);
+    padding-top: 25px;
     transition: all 1s;
     &.active{
       transition-delay: 1s;
@@ -42,17 +85,19 @@ html, body {
   .central_button{
     opacity: 0;
     transform: translate(-@translateX, 0);
-    transition: all 1s;
+    transition: all 1s, box-shadow 4s, width 3s;
     &.active{
       transition-delay: 1s;
-      //font-size: 8em;
-      //font-weight: 700;
       box-sizing: border-box;
-      background-color: @bodyBackground;
-      border: 1px solid @colorCentralText;
+      background-color: lighten(@bodyBackground, 3%);
+      border: 0px solid #3386d8;
+      border-radius: 5px;
       color: @colorCentralText;
       opacity: 1;
+      width: 80%;
+      height: 70px;
       transform: translate(0,0);
+      box-shadow: 0 0 10px 1px @colorCentralText;
       //text-shadow: 0px 0px 13px #081381;
     }
   }

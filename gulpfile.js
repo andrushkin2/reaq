@@ -44,8 +44,9 @@ gulp.task("default", ["clean"], function() {
 gulp.task("watch", function() {
     gulp.watch("styles/**/*.less", ["styles"]);
     gulp.watch("script/**/*.js", ["scripts"]);
+    gulp.watch("index.html", ["scripts", "styles"]);
     livereload.listen();
 
-    gulp.watch(["styles/**", "script/**"]).on("change", livereload.changed);
+    gulp.watch(["styles/**", "script/**", "index.html"]).on("change", livereload.changed);
 
 });
