@@ -34,8 +34,16 @@ html, body {
   text-align: center;
 }
 
+header{
+  .defaulStyle;
+  padding: 2px 0px;
+  font-size: 30px;
+  border-bottom: 1px solid @colorCentralText;
+}
+
 button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
   .defaulStyle;
+  cursor: pointer;
 }
 
 .button{
@@ -59,6 +67,22 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
     border: 1px solid @colorCentralText;
     border-radius: 10px;
     box-shadow: 0px 0px 60px 1px #368fe5;
+
+    &.test{
+      transition: all 1s;
+      transition-delay: 0s;
+      width: 100%;
+      max-width: 1024px;
+      top: 0;
+      margin-top: 0;
+
+      .central_text{
+        padding-top: 0;
+      }
+      .middle_button_block{
+        display: none;
+      }
+    }
   }
 
 
@@ -89,7 +113,7 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
     &.active{
       transition-delay: 1s;
       box-sizing: border-box;
-      background-color: lighten(@bodyBackground, 3%);
+      background-color: lighten(@bodyBackground, 1%);
       border: 0px solid #3386d8;
       border-radius: 5px;
       color: @colorCentralText;
@@ -99,6 +123,27 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
       transform: translate(0,0);
       box-shadow: 0 0 10px 1px @colorCentralText;
       //text-shadow: 0px 0px 13px #081381;
+    }
+
+    &:active{
+      box-shadow: -1px -1px 2px 1px @colorCentralText inset;
+      transition: all 0s;
+    }
+  }
+  .tests_cont {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 300px;
+    border: 1px solid @colorCentralText;
+    display: none;
+    border-radius: 5px;
+    background: rgb(248, 248, 248);;
+    color: @bodyBackground;
+
+    &.show {
+      display: block;
     }
   }
 }

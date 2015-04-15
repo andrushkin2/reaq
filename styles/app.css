@@ -14,6 +14,25 @@ body {
   font-style: normal;
   text-align: center;
 }
+header {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding: 2px 0px;
+  font-size: 30px;
+  border-bottom: 1px solid #e0fdff;
+}
 button,
 input[type="button"],
 input[type="reset"],
@@ -32,6 +51,7 @@ input[type="submit"] {
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
+  cursor: pointer;
 }
 .button {
   border: 1px solid;
@@ -57,6 +77,22 @@ input[type="submit"] {
           border-radius: 10px;
   -webkit-box-shadow: 0px 0px 60px 1px #368fe5;
           box-shadow: 0px 0px 60px 1px #368fe5;
+}
+.middle_cont.active.test {
+  -webkit-transition: all 1s;
+          transition: all 1s;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  width: 100%;
+  max-width: 1024px;
+  top: 0;
+  margin-top: 0;
+}
+.middle_cont.active.test .central_text {
+  padding-top: 0;
+}
+.middle_cont.active.test .middle_button_block {
+  display: none;
 }
 .middle_cont .middle_button_block {
   padding-bottom: 50px;
@@ -97,7 +133,7 @@ input[type="submit"] {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #245f98;
+  background-color: #225a90;
   border: 0px solid #3386d8;
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -110,4 +146,26 @@ input[type="submit"] {
           transform: translate(0, 0);
   -webkit-box-shadow: 0 0 10px 1px #e0fdff;
           box-shadow: 0 0 10px 1px #e0fdff;
+}
+.middle_cont .central_button:active {
+  -webkit-box-shadow: -1px -1px 2px 1px #e0fdff inset;
+          box-shadow: -1px -1px 2px 1px #e0fdff inset;
+  -webkit-transition: all 0s;
+          transition: all 0s;
+}
+.middle_cont .tests_cont {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 300px;
+  border: 1px solid #e0fdff;
+  display: none;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  background: #f8f8f8;
+  color: #21578c;
+}
+.middle_cont .tests_cont.show {
+  display: block;
 }

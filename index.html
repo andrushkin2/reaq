@@ -21,12 +21,25 @@
     <div class="middle_button_block">
         <button class="button central_button">Start test</button>
     </div>
+    <div class="tests_cont">
+        <header>
+            Tests questions...
+        </header>
+    </div>
 </div>
 <script>
     window.onload = function(){
+        var startButton = document.querySelector(".central_button");
         valera.addClass(document.querySelector(".middle_cont"), "active");
         valera.addClass(document.querySelector(".central_text"), "active");
-        valera.addClass(document.querySelector(".central_button"), "active");
+        valera.addClass(startButton, "active");
+
+        startButton.addEventListener("click", function(){
+            valera.addClass(document.querySelector(".middle_cont"), "test");
+//            valera.removeClass(document.querySelector(".central_text"), "active");
+            valera.removeClass(startButton, "active");
+            valera.addClass(document.querySelector(".tests_cont"), "show");
+        }, false);
     }
 </script>
 </body>
