@@ -20,6 +20,7 @@
 }
 
 html, body {
+  .defaulStyle;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -36,21 +37,33 @@ html, body {
 
 header{
   .defaulStyle;
-  padding: 2px 0px;
-  font-size: 30px;
-  border-bottom: 1px solid @colorCentralText;
+  padding: 13px 0;
+  margin: 0 7px;
+  font-size: 38px;
+  border-bottom: 4px solid rgba(33, 87, 140, 0.49);
+}
+footer{
+  padding: 13px 0;
+  margin: 0 7px;
+
 }
 
 button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
   .defaulStyle;
-  cursor: pointer;
 }
 
 .button{
-  border: 1px solid;
-  width: 150px;
-  height: 50px;
+  width: 70%;
+  max-width: 600px;
+  min-width: 100px;
+  height: 60px;
   font-size: 22px;
+  cursor: pointer;
+  outline: none;
+  background-color: lighten(@bodyBackground, 1%);
+  border: 1px solid darken(@bodyBackground, 10%);
+  border-radius: 5px;
+  color: @colorCentralText;
 }
 
 .middle_cont{
@@ -66,10 +79,10 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
     transition-delay: 2s;
     border: 1px solid @colorCentralText;
     border-radius: 10px;
-    box-shadow: 0px 0px 60px 1px #368fe5;
+    box-shadow: 0px 0px 60px 1px #25405A;
 
     &.test{
-      transition: all 1s;
+      transition: width 0s, all 1s;
       transition-delay: 0s;
       width: 100%;
       max-width: 1024px;
@@ -131,19 +144,26 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
     }
   }
   .tests_cont {
-    position: relative;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 300px;
-    border: 1px solid @colorCentralText;
-    display: none;
+    position: fixed;
+    //min-height: 300px;
     border-radius: 5px;
-    background: rgb(248, 248, 248);;
+    background: #F9F9F9;
+    padding: 0 15px;
     color: @bodyBackground;
+    transform: translate(0px, 10000px);
 
     &.show {
-      display: block;
+      position: relative;
+      transition: 2s;
+      transform: translate(0px, 0px);
+      box-shadow: 0 -2px 2px 1px rgb(248, 248, 248);
     }
   }
+}
+
+.show{
+  display: block;
+}
+.hide{
+  display: none;
 }
