@@ -28,15 +28,19 @@
         <div class="answers">
             <div class="answer">
                 <input type="checkbox" class="checkbox" id="1">
-                <label for="1">
-                    <span class="check">&nbsp;</span>
+                <label class="answerText" for="1">
+                    <span class="check">
+                        <span class="circle">&nbsp;</span>
+                    </span>
                     <span class="text"> adasdashdbajsdhasdjbasjdasd</span>
                 </label>
             </div>
             <div class="answer">
                 <input type="checkbox" class="checkbox" id="2">
-                <label for="2">
-                    <span class="check">&nbsp;</span>
+                <label class="answerText" for="2">
+                    <span class="check">
+                          <span class="circle">&nbsp;</span>
+                    </span>
                     <span class="text"> adasdashdbajsdhasdjbasjdasd</span>
                 </label>
             </div>
@@ -55,6 +59,7 @@
 
         startButton.addEventListener("click", function(){
             valera.addClass(document.querySelector(".middle_cont"), "test");
+            valera.addClass(document.body, "inActive");
 //            valera.removeClass(document.querySelector(".central_text"), "active");
             valera.removeClass(startButton, "active");
             valera.addClass(document.querySelector(".tests_cont"), "show");

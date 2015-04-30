@@ -1,7 +1,19 @@
 @translateX: 2000px;
 @colorCentralText: #e0fdff;
 @bodyBackground: rgb(33, 87, 140);
+@bodyBackgroundInActive: #F4F4F4;
 @defaulColor: #434343;
+
+@answerBorderColor: rgb(199, 199, 199);
+@answerBoxShadowColor: rgb(231, 231, 231);
+
+@circleBackground: #DEDEDE;
+@circleBorder: darken(@circleBackground, 20%);
+@circleBoxShadowColor: darken(@circleBackground, 50%);
+
+@circleBackgroundActive: rgb(26, 182, 232);
+@circleBorderActive: darken(@circleBackgroundActive, 20%);
+@circleBoxShadowColorActive: darken(@circleBackgroundActive, 50%);
 
 .defaulStyle(){
   font-family: inherit;
@@ -33,6 +45,10 @@ html, body {
   color: @defaulColor;
   font-style: normal;
   text-align: center;
+}
+body.inActive{
+  background: @bodyBackgroundInActive;
+  transition: background 3s;
 }
 
 header{
@@ -112,6 +128,9 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
       transition-delay: 1s;
       font-size: 8em;
       font-weight: 700;
+      background: @bodyBackground;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
       color: @colorCentralText;
       opacity: 1;
       height: 150px;
@@ -165,25 +184,51 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
       padding: 0 15px;
 
       .answer{
-        padding: 10px 0;
-        border: 1px solid;
+        border: 1px solid @answerBorderColor;
         border-radius: 5px;
-        margin: 5px 0;
+        margin: 10px 0;
         text-align: left;
         font-size: 22px;
         vertical-align: middle;
+        box-shadow: 1px 1px 0px 0px @answerBoxShadowColor;
+        user-select: none;
 
+        .answerText{
+          display: inline-block;
+          width: 100%;
+          line-height: 2.5em;
+          cursor: pointer;
+        }
         .checkbox{
           position: absolute;
-          display: none;
+          clip: rect(1px,1px,1px,1px);
         }
         .check{
           display: inline-block;
           width: 50px;
-          height: 50px;
+          border-right: 1px solid @answerBorderColor;
+          text-align: center;
+
+          .circle{
+            display: inline-block;
+            height: 25px;
+            width: 25px;
+            border-radius: 25px;
+            border: 1px solid @circleBorder;
+            background: @circleBackground;
+            vertical-align: middle;
+            box-shadow: 0px 1px 5px 0px @circleBoxShadowColor inset;
+            transition: all 0.5s;
+          }
+        }
+        .checkbox:checked+.answerText .check .circle{
+          border: 1px solid @circleBorderActive;
+          background: @circleBackgroundActive;
+          box-shadow: 0px 1px 5px 0px @circleBoxShadowColorActive inset;
         }
         .text{
           display: inline-block;
+          user-select: initial;
         }
       }
     }
