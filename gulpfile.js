@@ -9,6 +9,7 @@ var gulp = require("gulp"),
     notify = require("gulp-notify"),
     cache = require("gulp-cache"),
     livereload = require("gulp-livereload"),
+    gulpsync = require('gulp-sync')(gulp)
     del = require("del");
 
 gulp.task("styles", function() {
@@ -37,16 +38,17 @@ gulp.task("clean", function(cb) {
     del(["styles/*.css", "script/*.min.js"], cb);
 });
 
+gulp.task("reloadPage", function() {
+    livereload.reload();
+});
+
 gulp.task("default", ["clean"], function() {
     gulp.start("styles", "scripts");
 });
 
 gulp.task("watch", function() {
-    gulp.watch("styles/**/*.less", ["styles"]);
-    gulp.watch("script/**/*.js", ["scripts"]);
-    gulp.watch("index.html", ["scripts", "styles"]);
     livereload.listen();
-
-    gulp.watch(["styles/**", "script/**", "index.html"]).on("change", livereload.changed);
-
+    gulp.watch("styles/**/*.less", gulpsync.sync(["styles", "reloadPage"]));
+    gulp.watch("script/**/*.js", gulpsync.sync(["scripts", "reloadPage"]));
+    gulp.watch("index.html", ["reloadPage"]);
 });

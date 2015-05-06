@@ -19,6 +19,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overflow-y: auto;
   -webkit-border-radius: 0;
           border-radius: 0;
   background-color: #21578c;
@@ -89,6 +90,13 @@ input[type="submit"] {
   -webkit-border-radius: 5px;
           border-radius: 5px;
   color: #e0fdff;
+  -webkit-box-shadow: 1px -1px 2px 0px #12314e;
+          box-shadow: 1px -1px 2px 0px #12314e;
+}
+.button:active {
+  -webkit-box-shadow: -1px 2px 4px 0px #12314e inset;
+          box-shadow: -1px 2px 4px 0px #12314e inset;
+  font-size: 21px;
 }
 .middle_cont {
   width: 500px;

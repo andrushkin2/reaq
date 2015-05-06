@@ -15,6 +15,8 @@
 @circleBorderActive: darken(@circleBackgroundActive, 20%);
 @circleBoxShadowColorActive: darken(@circleBackgroundActive, 50%);
 
+@buttonFontSize: 22px;
+
 .defaulStyle(){
   font-family: inherit;
   font-weight: inherit;
@@ -38,6 +40,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overflow-y: auto;
   border-radius: 0;
   background-color: @bodyBackground;
   font-family: arial;
@@ -73,13 +76,19 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
   max-width: 600px;
   min-width: 100px;
   height: 60px;
-  font-size: 22px;
+  font-size: @buttonFontSize;
   cursor: pointer;
   outline: none;
   background-color: lighten(@bodyBackground, 1%);
   border: 1px solid darken(@bodyBackground, 10%);
   border-radius: 5px;
   color: @colorCentralText;
+  box-shadow: 1px -1px 2px 0px darken(@bodyBackground, 15%);
+
+  &:active{
+    box-shadow: -1px 2px 4px 0px darken(@bodyBackground, 15%) inset;
+    font-size: @buttonFontSize - 1px;
+  }
 }
 
 .middle_cont{
