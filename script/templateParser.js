@@ -31,8 +31,10 @@ var templateParser = function(parentElement){
         };
 
     return {
-        setOptions: function(newState){},
-        getoptions: function(){},
+        setOptions: function(newState){
+
+        },
+        getOptions: function(){},
         getState: function(){}
     }
 }

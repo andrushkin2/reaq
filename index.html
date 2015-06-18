@@ -11,9 +11,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Example</title>
     <link rel="stylesheet" href="./styles/app.min.css" type="text/css" charset="utf-8">
-    <script src="./script/app.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./script/loader.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./bower_components/js-xls/xls.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./script/app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./script/loader.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./script/fileParser.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./bower_components/js-xlsx/jszip.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./bower_components/js-xlsx/xlsx.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <div class="middle_cont">
@@ -64,6 +66,9 @@
             valera.removeClass(startButton, "active");
             valera.addClass(document.querySelector(".tests_cont"), "show");
         }, false);
+
+        var load = fileParser(XLSX, loader);
+        load.getData("./data/file.xlsx");
     }
 </script>
 </body>

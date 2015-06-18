@@ -4,6 +4,8 @@
 ~*
 node_modules
 npm-debug.log
+bower_components
+data
 node_modeles/*.*
 config/*.yml
 !.gitignore
