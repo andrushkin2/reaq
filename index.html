@@ -68,7 +68,11 @@
         }, false);
 
         var load = fileParser(XLSX, loader);
-        load.getData("./data/file.xlsx");
+        load.getData("./data/file.xlsx", function(data){
+            debugger;
+        }, function(error){
+            throw new Error(e);
+        });
     }
 </script>
 </body>

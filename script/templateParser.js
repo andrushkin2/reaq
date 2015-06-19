@@ -13,14 +13,14 @@ var templateParser = function(parentElement){
         footer,
         buttonOk,
         createQuestionCont = function(){
-            header = valera.createElemet("header", {}, {}, parentElement);
+            header = valera.createElement("header", {}, {}, parentElement);
         },
         createFooterCont = function(){
-            footer = valera.createElemet("footer", {}, {}, parentElement);
+            footer = valera.createElement("footer", {}, {}, parentElement);
             !buttonOk && createButton();
         },
         createButton = function(){
-            buttonOk = valera.createElemet("button", {
+            buttonOk = valera.createElement("button", {
                 class: "button",
                 value: buttonText
             });

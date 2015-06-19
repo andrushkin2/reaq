@@ -107,6 +107,6 @@
         isClassInElement: isClassInElement,
         removeClass: removeClass,
         addClass: addClass,
-        createElemet: createElement
+        createElement: createElement
     }
 })(document, window);

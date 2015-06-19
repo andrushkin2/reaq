@@ -2,7 +2,7 @@
  * Created by kosiak_man on 08.04.15.
  */
 
-loader = (function(window, document){
+loader = (function(){
     var getRequest = function(){
             return (new XMLHttpRequest());
         };
@@ -19,11 +19,11 @@ loader = (function(window, document){
                     arr[i] = String.fromCharCode(data[i]);
                 }
                 success && success(arr.join(""));
-            }
+            };
             request.onerror = function(e){
                 error && error(e);
-            }
+            };
             request.send();
         }
     }
-})(window, document);
+})();
