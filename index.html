@@ -12,6 +12,7 @@
     <title>Example</title>
     <link rel="stylesheet" href="./styles/app.min.css" type="text/css" charset="utf-8">
     <script src="./script/app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./script/ratata.js" type="text/javascript" charset="utf-8"></script>
     <script src="./script/loader.js" type="text/javascript" charset="utf-8"></script>
     <script src="./script/fileParser.js" type="text/javascript" charset="utf-8"></script>
     <script src="./bower_components/js-xlsx/jszip.js" type="text/javascript" charset="utf-8"></script>
@@ -21,7 +22,7 @@
 <div class="middle_cont">
     <div class="central_text">QAer</div>
     <div class="middle_button_block">
-        <button class="button central_button">Start test</button>
+        <button class="button central_button">Начать тест</button>
     </div>
     <div class="tests_cont">
         <header>
@@ -53,20 +54,10 @@
     </div>
 </div>
 <script>
+    valera.ready(function(){
+        initialize && initialize();
+    });
     window.onload = function(){
-        var startButton = document.querySelector(".central_button");
-        valera.addClass(document.querySelector(".middle_cont"), "active");
-        valera.addClass(document.querySelector(".central_text"), "active");
-        valera.addClass(startButton, "active");
-
-        startButton.addEventListener("click", function(){
-            valera.addClass(document.querySelector(".middle_cont"), "test");
-            valera.addClass(document.body, "inActive");
-//            valera.removeClass(document.querySelector(".central_text"), "active");
-            valera.removeClass(startButton, "active");
-            valera.addClass(document.querySelector(".tests_cont"), "show");
-        }, false);
-
         var load = fileParser(XLSX, loader);
         load.getData("./data/file.xlsx", function(data){
             debugger;

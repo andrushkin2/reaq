@@ -100,13 +100,91 @@
                     style[opt] = options[opt];
                 }
             }
-        };
-    window.valera = {
+        },
+        eventTarget = function(){
+            this._listeners = {};
+        },
+        getEventManager = function(){
+            return (new eventTarget());
+        },
+        eventer,
+        self,
+        ready = (function(){
+            var isLoaded = false;
+            return function(callback){
+                if (isLoaded){
+                    callback && callback();
+                } else {
+                    var loaded = function(){
+                        document.removeEventListener("DOMContentLoaded", loaded);
+                        isLoaded = true;
+                        callback && callback();
+                    }
+                    document.addEventListener("DOMContentLoaded", loaded);
+                }
+            }
+        })();
+
+    eventTarget.prototype = {
+        constructor: eventTarget,
+        attachEvent: function(type, listener){
+            if (!this._listeners[type]){
+                this._listeners[type] = [];
+            }
+            this._listeners[type].push(listener);
+        },
+        fireEvent: function(event){
+            var listeners, i, len;
+            event = event || {};
+            if (typeof event === "string"){
+                event = { type: event };
+            }
+            event.target = event.target || this;
+            if (!event.type || !this._listeners[event.type]){
+                return false;
+            }
+            listeners = this._listeners[event.type];
+            len = listeners.length;
+            for (i = 0; i < len; i++){
+                listeners[i].call(this, event);
+            }
+        },
+        detachEvent: function(type, listener){
+            var listeners, i, len;
+            if (this._listeners[type]){
+                listeners = this._listeners[type];
+                len = listeners.length;
+                for (i = 0; i < len; i++){
+                    if (listeners[i] === listener){
+                        listeners.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+        }
+    };
+
+    eventer = getEventManager();
+
+    self = {
+        ready: ready,
         css: css,
         extend: extend,
         isClassInElement: isClassInElement,
         removeClass: removeClass,
         addClass: addClass,
-        createElement: createElement
-    }
+        createElement: createElement,
+        getEventManager: getEventManager,
+        attachEvent: function(event, func){
+            eventer.attachEvent(event, func);
+        },
+        detachEvent: function(event, func){
+            eventer.detachEvent(event, func);
+        },
+        fireEvent: function(event){
+            eventer.fireEvent(event);
+        }
+    };
+
+    window.valera = self;
 })(document, window);
