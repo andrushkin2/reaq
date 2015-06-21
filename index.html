@@ -12,11 +12,11 @@
     <title>Example</title>
     <link rel="stylesheet" href="./styles/app.min.css" type="text/css" charset="utf-8">
     <script src="./script/app.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./script/ratata.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="./script/ratata.js" type="text/javascript" charset="utf-8"></script>-->
     <script src="./script/loader.js" type="text/javascript" charset="utf-8"></script>
     <script src="./script/fileParser.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./bower_components/js-xlsx/jszip.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./bower_components/js-xlsx/xlsx.js" type="text/javascript" charset="utf-8"></script>
+   <!-- <script src="./bower_components/js-xlsx/jszip.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./bower_components/js-xlsx/xlsx.js" type="text/javascript" charset="utf-8"></script>-->
 </head>
 <body>
 <div class="middle_cont">
@@ -55,15 +55,23 @@
 </div>
 <script>
     valera.ready(function(){
-        initialize && initialize();
+        valera.require([
+            ["./script/valeraXlsx.js", "valera.extends.xlsx"],
+            ["./script/ratata.js", "valera.extends.initialize"]
+        ], function(){
+            valera.extends.initialize();
+debugger;
+
+            var load = fileParser(valera.extends.xlsx, loader);
+            load.getData("./data/file.xlsx", function(data){
+                debugger;
+            }, function(error){
+                throw new Error(e);
+            });
+        });
     });
     window.onload = function(){
-        var load = fileParser(XLSX, loader);
-        load.getData("./data/file.xlsx", function(data){
-            debugger;
-        }, function(error){
-            throw new Error(e);
-        });
+
     }
 </script>
 </body>

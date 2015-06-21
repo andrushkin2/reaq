@@ -1,9 +1,9 @@
 (function (doc, win) {
-    var createElement = function (node, attrs, methods, appendTo) {
-            var elem = document.createElement(nodeName), opt;
+    var createElement = function (nodeName, attrs, methods, appendTo) {
+            var elem = doc.createElement(nodeName), opt;
             for (opt in attrs) {
                 if (attrs.hasOwnProperty(opt)) {
-                    elem.setAttribute(opt, options[opt]);
+                    elem.setAttribute(opt, attrs[opt]);
                 }
             }
             for (opt in methods) {
@@ -108,7 +108,103 @@
             return (new eventTarget());
         },
         eventer,
-        self,
+        head = doc.getElementsByTagName("head")[0] || doc.documentElement,
+        getScript = function(path, success, fail){
+            var done = false,
+                script = createElement("script", {
+                    src: path,
+                    type: "text/javascript",
+                    charset: "utf-8"
+                }),
+                removeScript = function(){
+                    // Handle memory leak in IE
+                    script.onload = script.onreadystatechange = script.onerror = null;
+                    if ( head && script.parentNode ) {
+                        head.removeChild( script );
+                    }
+                };
+            script.onload = script.onreadystatechange = function() {
+                if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+                    done = true;
+                    success && success();
+                    removeScript();
+                }
+            };
+            script.onerror = function(){
+                fail && fail();
+                removeScript();
+            };
+            head.insertBefore(script, head.firstChild );
+        },
+        require = (function(){
+            var parser = function(objects){
+
+            },
+                isObjectExist = function(objectString){
+                    var result = window,
+                        i, len,
+                        parts;
+                    if (objectString && typeof objectString === "string"){
+                        parts = objectString.split(".");
+                        for (i = 0, len = parts.length; i < len; i++){
+                            if (result){
+                                result = result[parts[i]];
+                            } else {
+                                break;
+                            }
+                        }
+                        return !!result;
+                    } else {
+                        return false;
+                    }
+                };
+            return function(objects, callback){
+                self.asset(objects instanceof Array, "require objects should be an array");
+                var len = objects.length,
+                    obj,
+                    loadedCount = 0,
+                    getFile = function(obj, objCheck, callback){
+                        var count = 3,
+                            reload = function(){
+                                count--;
+                                if (count){
+                                    getScript(obj, success, reload);
+                                } else {
+                                    throw new Error("Cannot load file: " + obj);
+                                }
+                            },
+                            success = function(){
+                                var timer;
+                                timer = setInterval(function(){
+                                    if (isObjectExist(objCheck)){
+                                        clearInterval(timer);
+                                        callback && callback();
+                                    }
+                                }, 100);
+                            };
+                        getScript(obj, success, reload);
+                    },
+                    loaded = function(){
+                        loadedCount++;
+                        (loadedCount === len) && callback && callback();
+                    },
+                    i;
+
+                if (len === 0){
+                    callback && callback();
+                    return;
+                }
+                for (i = 0; i < len; i++){
+                    obj = objects[i];
+                    isObjectExist(obj[1]) ? loaded() : getFile(obj[0], obj[1], loaded);
+                }
+            };
+        })(),
+        asset = function(isTrue, errorText){
+            if (!isTrue){
+                throw new Error(errorText);
+            }
+        },
         ready = (function(){
             var isLoaded = false;
             return function(callback){
@@ -116,11 +212,11 @@
                     callback && callback();
                 } else {
                     var loaded = function(){
-                        document.removeEventListener("DOMContentLoaded", loaded);
+                        doc.removeEventListener("DOMContentLoaded", loaded);
                         isLoaded = true;
                         callback && callback();
                     }
-                    document.addEventListener("DOMContentLoaded", loaded);
+                    doc.addEventListener("DOMContentLoaded", loaded);
                 }
             }
         })();
@@ -168,8 +264,11 @@
 
     self = {
         ready: ready,
+        extends: {},
         css: css,
+        asset: asset,
         extend: extend,
+        require: require,
         isClassInElement: isClassInElement,
         removeClass: removeClass,
         addClass: addClass,
