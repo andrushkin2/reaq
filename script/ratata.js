@@ -1,7 +1,9 @@
 /**
  * Created by kosiak_man on 19.06.15.
  */
-valera.require([], function(){
+valera.require([
+    ["./script/fileParser.js", "valera.extends.fileParser"]
+], function(){
     "use strict"
     valera.extends.initialize = function(){
         var startButton = document.querySelector(".central_button"),
@@ -32,6 +34,13 @@ valera.require([], function(){
         }, false);
 
         valera.fireEvent("showMainLogo", false);
+
+        var load = valera.extends.fileParser();
+        load.getData("./data/file.xlsx", function(data){
+            debugger;
+        }, function(error){
+            throw new Error(e);
+        });
 
     };
 });

@@ -242,7 +242,7 @@
             listeners = this._listeners[event.type];
             len = listeners.length;
             for (i = 0; i < len; i++){
-                listeners[i].call(this, event);
+                listeners[i].call(this, event, arguments);
             }
         },
         detachEvent: function(type, listener){
@@ -285,5 +285,5 @@
         }
     };
 
-    window.valera = self;
+    win.valera = self;
 })(document, window);
