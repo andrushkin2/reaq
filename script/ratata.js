@@ -2,7 +2,7 @@
  * Created by kosiak_man on 19.06.15.
  */
 valera.require([
-    ["./script/fileParser.js", "valera.extends.fileParser"]
+    ["./script/dataCenter.js", "valera.extends.dataCenter"]
 ], function(){
     "use strict"
     valera.extends.initialize = function(){
@@ -35,12 +35,11 @@ valera.require([
 
         valera.fireEvent("showMainLogo", false);
 
-        var load = valera.extends.fileParser();
-        load.getData("./data/file.xlsx", function(data){
+        var dataCenter = valera.extends.dataCenter();
+        dataCenter("./data/file.xlsx", function(data){
             debugger;
-        }, function(error){
-            throw new Error(e);
+        }, function(e){
+            debugger;
         });
-
     };
 });
