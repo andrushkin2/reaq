@@ -200,6 +200,25 @@
                 }
             };
         })(),
+        createId = (function(){
+            var getRandomInt = function( min, max ) {
+                    return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
+                },
+                i,
+                length = 8,
+                timestamp = +new Date,
+                generate = function() {
+                    var ts = timestamp.toString(),
+                        parts = ts.split( "" ).reverse(),
+                        id = "";
+
+                    for( i = 0; i < length; ++i ) {
+                        id += parts[getRandomInt(0, parts.length - 1)];
+                    }
+                    return id;
+                };
+            return generate;
+        })(),
         asset = function(isTrue, errorText){
             if (!isTrue){
                 throw new Error(errorText);
@@ -272,6 +291,7 @@
         isClassInElement: isClassInElement,
         removeClass: removeClass,
         addClass: addClass,
+        createId: createId,
         createElement: createElement,
         getEventManager: getEventManager,
         attachEvent: function(event, func){

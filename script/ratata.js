@@ -2,9 +2,11 @@
  * Created by kosiak_man on 19.06.15.
  */
 valera.require([
-    ["./script/dataCenter.js", "valera.extends.dataCenter"]
+    ["./script/dataCenter.js", "valera.extends.dataCenter"],
+    ["./script/templateParser.js", "valera.extends.templateParser"]
 ], function(){
-    "use strict"
+    "use strict";
+
     valera.extends.initialize = function(){
         var startButton = document.querySelector(".central_button"),
             middleCont = document.querySelector(".middle_cont"),
@@ -27,6 +29,14 @@ valera.require([
         valera.attachEvent("showMainLogo", showMainLogo);
         valera.attachEvent("startTest", function(){
             startTest(false);
+
+            var dataCenter = valera.extends.dataCenter();
+            dataCenter("./data/file.xlsx", function(data){
+                var tempalate = valera.extends.templateParser(document.querySelector(".tests_cont"));
+                tempalate.setState(data[0]);
+            }, function(e){
+                debugger;
+            });
         });
 
         startButton.addEventListener("click", function(){
@@ -34,12 +44,5 @@ valera.require([
         }, false);
 
         valera.fireEvent("showMainLogo", false);
-
-        var dataCenter = valera.extends.dataCenter();
-        dataCenter("./data/file.xlsx", function(data){
-            debugger;
-        }, function(e){
-            debugger;
-        });
     };
 });

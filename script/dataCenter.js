@@ -18,7 +18,6 @@ valera.require([
                 };
             },
             parseData = function(arrayData){
-                debugger;
                 var result = [],
                     activeObject,
                     len, i, elem;
