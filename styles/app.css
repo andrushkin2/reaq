@@ -249,7 +249,7 @@ input[type="submit"] {
 .middle_cont .tests_cont .answers .answer .check {
   display: inline-block;
   width: 50px;
-  border-right: 1px solid #c7c7c7;
+  position: absolute;
   text-align: center;
 }
 .middle_cont .tests_cont .answers .answer .check .circle {
@@ -273,6 +273,9 @@ input[type="submit"] {
           box-shadow: 0px 1px 5px 0px #000203 inset;
 }
 .middle_cont .tests_cont .answers .answer .text {
+  border-left: 1px solid #c7c7c7;
+  padding: 0px 10px;
+  margin-left: 50px;
   display: inline-block;
   -webkit-user-select: initial;
      -moz-user-select: initial;

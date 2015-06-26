@@ -34,6 +34,7 @@ valera.require([
             dataCenter("./data/file.xlsx", function(data){
                 var tempalate = valera.extends.templateParser(document.querySelector(".tests_cont"));
                 tempalate.setState(data[0]);
+                debugger;
             }, function(e){
                 debugger;
             });

@@ -215,7 +215,7 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
         .check{
           display: inline-block;
           width: 50px;
-          border-right: 1px solid @answerBorderColor;
+          position: absolute;
           text-align: center;
 
           .circle{
@@ -236,6 +236,9 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
           box-shadow: 0px 1px 5px 0px @circleBoxShadowColorActive inset;
         }
         .text{
+          border-left: 1px solid @answerBorderColor;
+          padding: 0px 10px;
+          margin-left: 50px;
           display: inline-block;
           user-select: initial;
         }

@@ -59,7 +59,7 @@ valera.require([], function(){
                 valera.createElement("span", {
                     class: "text"
                 }, {
-                    innerHTML: "<span class=\"text\">"+ questionText +"</span>"
+                    innerHTML: questionText
                 }, label);
                 return check;
             },
@@ -71,6 +71,15 @@ valera.require([], function(){
                 for (i = 0; i < len; i++){
                     answerArr.push(answerContainer(answers[i]));
                 }
+            },
+            getState = function(){
+                var i, len = answerArr.length,
+                    result = valera.extend(true, {}, options);
+                result[statesProp] = [];
+                for (i = 0; i < len; i++){
+                    result[statesProp].push(answerArr[i].checked);
+                }
+                return result;
             },
             createElements = function(){
                 !header && createQuestionCont();
@@ -86,7 +95,7 @@ valera.require([], function(){
                 createAnswer();
 
             },
-            getState: function(){}
+            getState: getState
         }
     }
 });
