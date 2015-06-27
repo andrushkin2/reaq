@@ -5,32 +5,17 @@ valera.require([], function(){
     "use strict";
 
     valera.extends.templateParser = function(parentElement){
-        var buttonText = "Ответить",
-            statesProp = "states",
+        var statesProp = "states",
             options = {
                 text: "",
                 answers: [],
                 trueFalseIndexes: []
             },
-            i,
             header,
-            footer,
             answers,
             answerArr = [],
-            buttonOk,
             createQuestionCont = function(){
                 header = valera.createElement("header", {}, {}, parentElement);
-            },
-            createFooterCont = function(){
-                footer = valera.createElement("footer", {}, {}, parentElement);
-                !buttonOk && createButton();
-            },
-            createButton = function(){
-                buttonOk = valera.createElement("button", {
-                    class: "button"
-                }, {
-                    innerHTML: buttonText
-                }, footer);
             },
             createAnswersContainer = function(){
                 answers = valera.createElement("div", {
@@ -81,10 +66,15 @@ valera.require([], function(){
                 }
                 return result;
             },
+            destroy = function(){
+                header && parentElement.removeChild(header);
+                answers && parentElement.removeChild(answers);
+                header = null;
+                answers = null;
+            },
             createElements = function(){
                 !header && createQuestionCont();
                 !answers && createAnswersContainer();
-                !footer && createFooterCont();
             };
 
         return {
@@ -95,7 +85,8 @@ valera.require([], function(){
                 createAnswer();
 
             },
-            getState: getState
+            getState: getState,
+            destroy: destroy
         }
     }
 });
