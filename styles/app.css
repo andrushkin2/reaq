@@ -218,8 +218,40 @@ input[type="submit"] {
   -webkit-box-shadow: 0 -2px 2px 1px #f8f8f8;
           box-shadow: 0 -2px 2px 1px #f8f8f8;
 }
+.middle_cont .tests_cont .test_cases {
+  overflow: hidden;
+}
+.middle_cont .tests_cont .test_cases .test_case {
+  position: relative;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 15px 0px #434343 inset;
+          box-shadow: 0px 0px 15px 0px #434343 inset;
+  -webkit-transition: 1s;
+          transition: 1s;
+}
+.middle_cont .tests_cont .test_cases .test_case:first-child {
+  -webkit-transform: translate(-1500px, 0px);
+      -ms-transform: translate(-1500px, 0px);
+          transform: translate(-1500px, 0px);
+}
+.middle_cont .tests_cont .test_cases .test_case:last-child {
+  -webkit-transform: translate(1500px, 0px);
+      -ms-transform: translate(1500px, 0px);
+          transform: translate(1500px, 0px);
+}
+.middle_cont .tests_cont .test_cases .test_case.active {
+  position: relative;
+  -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .middle_cont .tests_cont .answers {
   padding: 0 15px;
+  padding-bottom: 5px;
 }
 .middle_cont .tests_cont .answers .answer {
   border: 1px solid #c7c7c7;

@@ -9,13 +9,15 @@ valera.require([
     valera.extends.questionsSwitcher = function(parentContainer, insertBefore){
         var container,
             createContainer = function(){
-                var elem = valera.createElement("div", null, null, !insertBefore? parentContainer : null);
+                var elem = valera.createElement("div", {
+                    class: "test_cases"
+                }, null, !insertBefore? parentContainer : null);
                 insertBefore && parentContainer.insertBefore(elem, insertBefore);
                 return elem;
             },
             createTestCont = function(){
                 return valera.createElement("div", {
-                    class: "tests_cont"
+                    class: "test_case"
                 }, null, container);
             },
             destroy = function(){
@@ -32,8 +34,8 @@ valera.require([
             activeIndex = 0,
             containers = [],
             createContainers = function(){
-                var elem = createTestCont();
                 [0, 1].map(function(){
+                    var elem = createTestCont();
                     containers.push({
                         container: elem,
                         parser: tempParser(elem)
@@ -51,11 +53,16 @@ valera.require([
                 var oldActiveCont,
                     newActiveCont;
                 createElemets();
+                debugger;
                 oldActiveCont = containers[activeIndex];
                 activeIndex = activeIndex ? 0 : 1;
                 newActiveCont = containers[activeIndex];
                 newActiveCont.parser.setState(newState);
-                return oldActiveCont.parser.getState();
+                valera.removeClass(oldActiveCont.container, "active");
+                valera.addClass(newActiveCont.container, "active");
+            },
+            getState: function(){
+                return containers[activeIndex].parser.getState();
             },
             destroy: destroy
         }

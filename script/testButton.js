@@ -24,12 +24,16 @@ valera.require([
                 !footer && createFooterCont();
                 !buttonOk && createButton();
                 switcher = switcher || valera.extends.questionsSwitcher(parent, footer);
+            },
+            clickEvent = function(e){
+                e.preventDefault();
+                // todo: add logic for working with data step by step
             };
         createElements();
 
         return {
-            start: function(){
-
+            start: function(newState){
+                switcher && switcher.setState(newState);
             },
             stop: function(){},
             destroy: function(){
