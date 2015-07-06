@@ -34,7 +34,7 @@ valera.require([
             var dataCenter = valera.extends.dataCenter();
             dataCenter("./data/file.xlsx", function(data){
                 var testButton = valera.extends.testButton(testsCont);
-                testButton.start(data[0]);
+                testButton.start(data);
                 debugger;
             }, function(e){
                 debugger;

@@ -22,23 +22,40 @@ valera.require([
             },
             createElements = function(){
                 !footer && createFooterCont();
-                !buttonOk && createButton();
+                if (!buttonOk){
+                    createButton();
+                    buttonOk.addEventListener("click", clickEvent, false);
+                }
                 switcher = switcher || valera.extends.questionsSwitcher(parent, footer);
             },
             clickEvent = function(e){
-                e.preventDefault();
+                e && e.preventDefault();
+                index++;
+                switcher && data[index] && switcher.setState(data[index]);
                 // todo: add logic for working with data step by step
-            };
+            },
+            destroy = function(){
+                data = [];
+                index = -1;
+                if (buttonOk){
+                    buttonOk.removeEventListener("click", clickEvent, false);
+                    footer && footer.removeChild(buttonOk);
+                }
+                footer && parent && parent.removeChild(footer);
+                switcher && switcher.destroy();
+                footer = buttonOk = switcher = null;
+            },
+            data = [],
+            index = -1;
         createElements();
 
         return {
             start: function(newState){
-                switcher && switcher.setState(newState);
+                data = newState || [];
+                clickEvent();
             },
             stop: function(){},
-            destroy: function(){
-
-            }
+            destroy: destroy
         }
     }
 });

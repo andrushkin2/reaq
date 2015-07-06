@@ -220,14 +220,18 @@ input[type="submit"] {
 }
 .middle_cont .tests_cont .test_cases {
   overflow: hidden;
+  position: relative;
 }
 .middle_cont .tests_cont .test_cases .test_case {
   position: relative;
+  top: 0;
+  left: 0;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-shadow: 0px 0px 15px 0px #434343 inset;
           box-shadow: 0px 0px 15px 0px #434343 inset;
+  height: 0;
   -webkit-transition: 1s;
           transition: 1s;
 }
@@ -243,6 +247,9 @@ input[type="submit"] {
 }
 .middle_cont .tests_cont .test_cases .test_case.active {
   position: relative;
+  height: auto;
+  -webkit-transition: 1.5s;
+          transition: 1.5s;
   -webkit-transform: translate(0px, 0px);
       -ms-transform: translate(0px, 0px);
           transform: translate(0px, 0px);

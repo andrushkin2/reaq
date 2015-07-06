@@ -80,6 +80,7 @@ valera.require([], function(){
         return {
             setState: function(newState){
                 options = valera.extend(true, {}, options, newState);
+                destroy();
                 createElements();
                 header.innerText = options.question;
                 createAnswer();
