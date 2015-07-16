@@ -31,11 +31,18 @@ valera.require([
             clickEvent = function(e){
                 e && e.preventDefault();
                 index++;
-                switcher && data[index] && switcher.setState(data[index]);
+                index - 1 > -1 && answers.push(switcher.getState());
+                if (switcher && data[index]){
+                    switcher.setState(data[index]);
+                } else {
+                    callbackFunc && callbackFunc(answers);
+                }
                 // todo: add logic for working with data step by step
             },
             destroy = function(){
                 data = [];
+                answers = [];
+                callbackFunc = null;
                 index = -1;
                 if (buttonOk){
                     buttonOk.removeEventListener("click", clickEvent, false);
@@ -45,16 +52,18 @@ valera.require([
                 switcher && switcher.destroy();
                 footer = buttonOk = switcher = null;
             },
+            answers = [],
+            callbackFunc = null,
             data = [],
             index = -1;
         createElements();
 
         return {
-            start: function(newState){
+            start: function(newState, callback){
                 data = newState || [];
                 clickEvent();
+                callbackFunc = callback;
             },
-            stop: function(){},
             destroy: destroy
         }
     }

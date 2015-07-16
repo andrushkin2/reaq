@@ -53,7 +53,6 @@ valera.require([
                 var oldActiveCont,
                     newActiveCont;
                 createElemets();
-                debugger;
                 oldActiveCont = containers[activeIndex];
                 activeIndex = activeIndex ? 0 : 1;
                 newActiveCont = containers[activeIndex];

@@ -26,6 +26,9 @@ valera.require([
                 valera.addClass(centralText, "active");
                 valera.addClass(startButton, "active");
                 startTest(true);
+            },
+            callback = function(data){
+                debugger;
             };
         valera.attachEvent("showMainLogo", showMainLogo);
         valera.attachEvent("startTest", function(){
@@ -34,8 +37,7 @@ valera.require([
             var dataCenter = valera.extends.dataCenter();
             dataCenter("./data/file.xlsx", function(data){
                 var testButton = valera.extends.testButton(testsCont);
-                testButton.start(data);
-                debugger;
+                testButton.start(data.slice(0, 10), callback);
             }, function(e){
                 debugger;
             });

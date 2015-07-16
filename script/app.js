@@ -14,6 +14,7 @@
             appendTo && appendTo.appendChild(elem);
             return elem;
         },
+        self,
         isArray = function(arr){
             return Object.prototype.toString.call(arr).indexOf("Array") !== -1;
         },
@@ -137,10 +138,7 @@
             head.insertBefore(script, head.firstChild );
         },
         require = (function(){
-            var parser = function(objects){
-
-            },
-                isObjectExist = function(objectString){
+            var isObjectExist = function(objectString){
                     var result = window,
                         i, len,
                         parts;
@@ -206,18 +204,17 @@
                 },
                 i,
                 length = 8,
-                timestamp = +new Date,
-                generate = function() {
-                    var ts = timestamp.toString(),
-                        parts = ts.split( "" ).reverse(),
-                        id = "";
+                timestamp = +new Date;
+            return function() {
+                var ts = timestamp.toString(),
+                    parts = ts.split( "" ).reverse(),
+                    id = "";
 
-                    for( i = 0; i < length; ++i ) {
-                        id += parts[getRandomInt(0, parts.length - 1)];
-                    }
-                    return id;
-                };
-            return generate;
+                for( i = 0; i < length; ++i ) {
+                    id += parts[getRandomInt(0, parts.length - 1)];
+                }
+                return id;
+            };
         })(),
         asset = function(isTrue, errorText){
             if (!isTrue){
@@ -234,7 +231,7 @@
                         doc.removeEventListener("DOMContentLoaded", loaded);
                         isLoaded = true;
                         callback && callback();
-                    }
+                    };
                     doc.addEventListener("DOMContentLoaded", loaded);
                 }
             }
