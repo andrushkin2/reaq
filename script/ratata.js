@@ -4,7 +4,8 @@
 valera.require([
     ["./script/dataCenter.js", "valera.extends.dataCenter"],
     ["./script/templateParser.js", "valera.extends.templateParser"],
-    ["./script/testButton.js", "valera.extends.testButton"]
+    ["./script/testButton.js", "valera.extends.testButton"],
+    ["./script/pdf.js", "valera.extends.pdfjs"]
 ], function(){
     "use strict";
 

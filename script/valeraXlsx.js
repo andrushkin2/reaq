@@ -8,6 +8,5 @@ valera.require([
     "use strict";
     valera.extends.xlsx = window.XLSX;
     valera.asset(!!XLSX, "XLSX variable doesn't exist");
-    valera.asset(!!JSZip, "JSZip variable doesn't exist");
     window.XLSX = null;
 }, true);
