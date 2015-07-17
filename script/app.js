@@ -156,7 +156,7 @@
                         return false;
                     }
                 };
-            return function(objects, callback){
+            return function(objects, callback, isSync){
                 self.asset(objects instanceof Array, "require objects should be an array");
                 var len = objects.length,
                     obj,
@@ -186,15 +186,28 @@
                         loadedCount++;
                         (loadedCount === len) && callback && callback();
                     },
+                    syncLoad = function(){
+                        i++;
+                        loaded();
+                        if (i < len){
+                            obj = objects[i];
+                            isObjectExist(obj[1]) ? syncLoad() : getFile(obj[0], obj[1], syncLoad);
+                        }
+                    },
                     i;
 
                 if (len === 0){
                     callback && callback();
-                    return;
-                }
-                for (i = 0; i < len; i++){
+                    return true;
+                } else if (!isSync){
+                    for (i = 0; i < len; i++){
+                        obj = objects[i];
+                        isObjectExist(obj[1]) ? loaded() : getFile(obj[0], obj[1], loaded);
+                    }
+                } else {
+                    i = 0;
                     obj = objects[i];
-                    isObjectExist(obj[1]) ? loaded() : getFile(obj[0], obj[1], loaded);
+                    isObjectExist(obj[1]) ? syncLoad() : getFile(obj[0], obj[1], syncLoad);
                 }
             };
         })(),
