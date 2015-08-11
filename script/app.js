@@ -212,7 +212,7 @@
             };
         })(),
         createId = (function(){
-            var getRandomInt = function( min, max ) {
+            var getRandomInt = function(min, max) {
                     return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
                 },
                 i,
@@ -220,10 +220,10 @@
                 timestamp = +new Date;
             return function() {
                 var ts = timestamp.toString(),
-                    parts = ts.split( "" ).reverse(),
+                    parts = ts.split("").reverse(),
                     id = "";
 
-                for( i = 0; i < length; ++i ) {
+                for(i = 0; i < length; ++i ) {
                     id += parts[getRandomInt(0, parts.length - 1)];
                 }
                 return id;

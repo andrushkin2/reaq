@@ -61,6 +61,7 @@ valera.require([
         return {
             start: function(newState, callback){
                 data = newState || [];
+                createElements();
                 clickEvent();
                 callbackFunc = callback;
             },
