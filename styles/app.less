@@ -3,6 +3,9 @@
 @bodyBackground: rgb(33, 87, 140);
 @bodyBackgroundInActive: #F4F4F4;
 @defaulColor: #434343;
+@primaryTextColor: @bodyBackground;
+
+@wrongBorderColor: rgb(222, 45, 45);
 
 @answerBorderColor: rgb(199, 199, 199);
 @answerBoxShadowColor: rgb(231, 231, 231);
@@ -269,6 +272,51 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
           margin-left: 50px;
           display: inline-block;
           user-select: initial;
+        }
+      }
+    }
+
+
+    .reportBlock{
+      box-sizing: border-box;
+      margin: 5px 5px;
+      border: 1px solid @answerBorderColor;
+      border-radius: 5px;
+      &.rightBlock{
+        border-color: @primaryTextColor;
+      }
+
+      .header{
+        font-size: 20px;
+        line-height: 40px;
+      }
+
+      .answer{
+        &.wrong{
+          border-color: @wrongBorderColor;
+        }
+
+        .answerText {
+          line-height: 25px;
+          height: 30px;
+        }
+
+        .check{
+          line-height: 25px;
+          height: 30px;
+          &.labelCheck{
+            left: 90px;
+          }
+          &.active .circle{
+            border: 1px solid @circleBorderActive;
+            background: @circleBackgroundActive;
+            box-shadow: 0px 1px 5px 0px @circleBoxShadowColorActive inset;
+          }
+        }
+        .text{
+          padding: 0 10px 0 50px;
+          font-size: 16px;
+          line-height: 25px;
         }
       }
     }

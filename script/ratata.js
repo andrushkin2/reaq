@@ -5,7 +5,8 @@ valera.require([
     ["./script/dataCenter.js", "valera.extends.dataCenter"],
     ["./script/templateParser.js", "valera.extends.templateParser"],
     ["./script/testButton.js", "valera.extends.testButton"],
-    ["./script/report.js", "valera.extends.report"]
+    ["./script/report.js", "valera.extends.report"],
+    ["./script/dataSpliter.js", "valera.extends.dataSpliter"]
 ], function(){
     "use strict";
 
@@ -49,7 +50,7 @@ valera.require([
             var dataCenter = valera.extends.dataCenter();
             dataCenter("./data/file.xlsx", function(data){
                 testManager = valera.extends.testButton(testsCont);
-                testManager.start(data.slice(0, 1), callback);
+                testManager.start(valera.extends.dataSpliter(data, 25), callback);
             }, function(e){
                 debugger;
             });

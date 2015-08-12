@@ -36,9 +36,9 @@ valera.require([], function() {
                     class: "answers"
                 }, null, appendTo);
             },
-            answerContainer = function(questionText, isTrue, appendTo){
+            answerContainer = function(questionText, isTrue, userAnswer, appendTo){
                 var questCont = valera.createElement("div", {
-                        class: "answer"
+                        class: "answer" + (isTrue !== userAnswer? " wrong" : "")
                     }, null, appendTo),
                     id = valera.createId(),
                     label = valera.createElement("div", {
@@ -46,7 +46,7 @@ valera.require([], function() {
                         for: id
                     }, null, questCont);
                 createElement("span", {
-                    class: "check"
+                    class: "check" + (userAnswer? " active" : "")
                 }, {
                     innerHTML: "<span class=\"circle\">&nbsp;</span>"
                 }, label);
@@ -83,9 +83,10 @@ valera.require([], function() {
                 if (!compareStates(option[statesProp], option.trueFalseIndexes)){
                     questions = createAnswerBlock(block);
                     for (i = 0; i < len; i++){
-                        answerContainer(option.answers[i], option.trueFalseIndexes[i], questions);
+                        answerContainer(option.answers[i], option.trueFalseIndexes[i], option[statesProp][i], questions);
                     }
                 } else {
+                    valera.addClass(block, "rightBlock");
                     rightQuestionsAmount++;
                 }
             },
@@ -98,7 +99,6 @@ valera.require([], function() {
                 for (i = 0; i < len; i++){
                     createResultBlock(results[i]);
                 }
-                debugger;
             },
             showOrHide = function(isShow){
                 mainCont.style.display = isShow? "block" : "none";

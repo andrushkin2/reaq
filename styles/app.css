@@ -321,6 +321,47 @@ input[type="submit"] {
       -ms-user-select: initial;
           user-select: initial;
 }
+.middle_cont .tests_cont .reportBlock {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 5px 5px;
+  border: 1px solid #c7c7c7;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+.middle_cont .tests_cont .reportBlock.rightBlock {
+  border-color: #21578c;
+}
+.middle_cont .tests_cont .reportBlock .header {
+  font-size: 20px;
+  line-height: 40px;
+}
+.middle_cont .tests_cont .reportBlock .answer.wrong {
+  border-color: #de2d2d;
+}
+.middle_cont .tests_cont .reportBlock .answer .answerText {
+  line-height: 25px;
+  height: 30px;
+}
+.middle_cont .tests_cont .reportBlock .answer .check {
+  line-height: 25px;
+  height: 30px;
+}
+.middle_cont .tests_cont .reportBlock .answer .check.labelCheck {
+  left: 90px;
+}
+.middle_cont .tests_cont .reportBlock .answer .check.active .circle {
+  border: 1px solid #0e6f8e;
+  background: #1ab6e8;
+  -webkit-box-shadow: 0px 1px 5px 0px #000203 inset;
+          box-shadow: 0px 1px 5px 0px #000203 inset;
+}
+.middle_cont .tests_cont .reportBlock .answer .text {
+  padding: 0 10px 0 50px;
+  font-size: 16px;
+  line-height: 25px;
+}
 .show {
   display: block;
 }
