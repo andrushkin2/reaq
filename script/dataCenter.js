@@ -7,7 +7,7 @@ valera.require([
     "use strict";
     valera.extends.dataCenter = function(){
         var questionField = "Вопрос",
-            answerField = "Варианты ответов",
+            answerField = "Ответы",
             isTrueField = "isTrue",
             load = valera.extends.fileParser(),
             getObject = function(){
