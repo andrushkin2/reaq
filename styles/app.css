@@ -342,7 +342,8 @@ input[type="submit"] {
 }
 .middle_cont .tests_cont .reportBlock .answer .answerText {
   line-height: 25px;
-  height: 30px;
+  height: auto;
+  min-height: 30px;
 }
 .middle_cont .tests_cont .reportBlock .answer .check {
   line-height: 25px;
