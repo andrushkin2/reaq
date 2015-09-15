@@ -3,6 +3,8 @@
 node_modules
 npm-debug.log
 bower_components/*
+!bower_components/js-xlsx
+bower_components/js-xlsx/*
 node_modeles/*.*
 config/*.yml
 !.gitignore
