@@ -2,11 +2,10 @@
 ~*
 node_modules
 npm-debug.log
-bower_components
-data
+bower_components/*
 node_modeles/*.*
 config/*.yml
 !.gitignore
 !*.example
-!bower_components/js-xlsx/jszip.js
-!bower_components/js-xlsx/xlsx.js
+!bower_components/*/jszip.js
+!bower_components/*/xlsx.js
