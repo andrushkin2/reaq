@@ -149,9 +149,6 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
       transform: translate(0,0);
       text-shadow: 0px 0px 13px #081381;
     }
-    .reportResults{
-      
-    }
   }
   .central_button{
     opacity: 0;
@@ -256,7 +253,7 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
             display: inline-block;
             height: 25px;
             width: 25px;
-            border-radius: 25px;
+            border-radius: 5px;
             border: 1px solid @circleBorder;
             background: @circleBackground;
             vertical-align: middle;
@@ -282,11 +279,19 @@ button, input[type = "button"], input[type = "reset"], input[type = "submit"]{
 
     .reportBlock{
       box-sizing: border-box;
-      margin: 5px 5px;
+      margin: 10px 5px;
       border: 1px solid @answerBorderColor;
       border-radius: 5px;
+      background: #F3F3F3;
       &.rightBlock{
         border-color: @primaryTextColor;
+      }
+      &.resultBlock{
+        border: none;
+        box-shadow: 0px 0px 1px 1px @circleBoxShadowColorActive;
+        background: @bodyBackground;
+        color: @colorCentralText;
+        text-shadow: 0px 0px 13px #081381;
       }
 
       .header{

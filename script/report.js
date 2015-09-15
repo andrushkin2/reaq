@@ -93,12 +93,17 @@ valera.require([], function() {
             setOptions = function(results){
                 valera.asset(results.hasOwnProperty("length"), "Results should be an array");
                 var i,
+                    resultsBlock,
                     len = results.length;
                 reset();
+                resultsBlock = createElement("div", {
+                    class: "reportBlock rightBlock resultBlock"
+                }, null, mainCont);
                 questionAmount = len;
                 for (i = 0; i < len; i++){
                     createResultBlock(results[i]);
                 }
+                createHeader("Правильных ответов {0} из {1}".replace("{0}", rightQuestionsAmount).replace("{1}", questionAmount), resultsBlock);
             },
             showOrHide = function(isShow){
                 mainCont.style.display = isShow? "block" : "none";

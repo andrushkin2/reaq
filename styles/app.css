@@ -295,8 +295,8 @@ input[type="submit"] {
   display: inline-block;
   height: 25px;
   width: 25px;
-  -webkit-border-radius: 25px;
-          border-radius: 25px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
   border: 1px solid #ababab;
   background: #dedede;
   vertical-align: middle;
@@ -325,13 +325,22 @@ input[type="submit"] {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 5px 5px;
+  margin: 10px 5px;
   border: 1px solid #c7c7c7;
   -webkit-border-radius: 5px;
           border-radius: 5px;
+  background: #F3F3F3;
 }
 .middle_cont .tests_cont .reportBlock.rightBlock {
   border-color: #21578c;
+}
+.middle_cont .tests_cont .reportBlock.resultBlock {
+  border: none;
+  -webkit-box-shadow: 0px 0px 1px 1px #000203;
+          box-shadow: 0px 0px 1px 1px #000203;
+  background: #21578c;
+  color: #e0fdff;
+  text-shadow: 0px 0px 13px #081381;
 }
 .middle_cont .tests_cont .reportBlock .header {
   font-size: 20px;
