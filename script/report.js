@@ -46,12 +46,14 @@ valera.require([], function() {
                         for: id
                     }, null, questCont);
                 createElement("span", {
-                    class: "check" + (userAnswer? " active" : "")
+                    class: "check" + (userAnswer? " active" : ""),
+                    title: "Ответ юзера"
                 }, {
                     innerHTML: "<span class=\"circle\">&nbsp;</span>"
                 }, label);
                 createElement("span", {
-                    class: "check labelCheck" + (isTrue? " active" : "")
+                    class: "check labelCheck" + (isTrue? " active" : ""),
+                    title: "Ожидаемый ответ"
                 }, {
                     innerHTML: "<span class=\"circle\">&nbsp;</span>"
                 }, label);
@@ -103,7 +105,7 @@ valera.require([], function() {
                 for (i = 0; i < len; i++){
                     createResultBlock(results[i]);
                 }
-                createHeader("Правильных ответов {0} из {1}".replace("{0}", rightQuestionsAmount).replace("{1}", questionAmount), resultsBlock);
+                createHeader("Правильных ответов {0} из {1}.<br/>Процент правильных ответов: {2}%".replace("{0}", rightQuestionsAmount).replace("{1}", questionAmount).replace("{2}", Math.round(rightQuestionsAmount/questionAmount*100)), resultsBlock);
             },
             showOrHide = function(isShow){
                 mainCont.style.display = isShow? "block" : "none";

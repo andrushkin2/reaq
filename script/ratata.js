@@ -49,11 +49,11 @@ valera.require([
             startTest(false);
 
             var dataCenter = valera.extends.dataCenter();
-            centralText.innerText = "QAer\n\rLoading...";
+            centralText.innerHTML = "QAer\n\rLoading...";
             dataCenter("https://googledrive.com/host/0BxKB0KqpArG9R3l3c1Y3aUdQTVU/FirstLevelTest.xlsx", function(data){
                 testManager = valera.extends.testButton(testsCont);
-                centralText.innerText = "QAer";
-                testManager.start(valera.extends.dataSpliter(data, 25), callback);
+                centralText.innerHTML = "QAer";
+                testManager.start(valera.extends.dataSpliter(data, 5), callback);
             }, function(e){
                 debugger;
             });
