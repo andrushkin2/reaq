@@ -21,5 +21,5 @@ valera.require([], function() {
             }
         }
         return result;
-    }
+    };
 });

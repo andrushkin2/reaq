@@ -66,6 +66,6 @@ valera.require([
                 callbackFunc = callback;
             },
             destroy: destroy
-        }
-    }
+        };
+    };
 });

@@ -117,6 +117,6 @@ valera.require([], function() {
                 showOrHide(true);
             },
             hide: showOrHide
-        }
-    }
+        };
+    };
 });

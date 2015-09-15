@@ -79,7 +79,7 @@
                     text = classObj.textContent.replace(reg, "");
                     element.setAttribute("class", text);
                 }
-            }
+            };
         })(),
         isClassInElement = (function () {
             return isHaveClassList ? function (element, className) {
@@ -88,11 +88,11 @@
                 var reg = new RegExp("\\s?" + className, "gim"),
                     classObj = element.attributes.getNamedItem("class");
                 if (!!classObj) {
-                    return reg.test(classObj.textContent)
+                    return reg.test(classObj.textContent);
                 } else {
                     return false;
                 }
-            }
+            };
         })(),
         css = function (element, options) {
             var style = element.style, opt;
@@ -247,7 +247,7 @@
                     };
                     doc.addEventListener("DOMContentLoaded", loaded);
                 }
-            }
+            };
         })();
 
     eventTarget.prototype = {

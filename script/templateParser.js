@@ -88,6 +88,6 @@ valera.require([], function(){
             },
             getState: getState,
             destroy: destroy
-        }
-    }
+        };
+    };
 });

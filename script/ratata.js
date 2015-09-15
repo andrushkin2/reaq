@@ -1,3 +1,4 @@
+/* global valera */
 /**
  * Created by kosiak_man on 19.06.15.
  */

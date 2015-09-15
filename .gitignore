@@ -1,5 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
-.gitignore
 .*
 ~*
 node_modules
@@ -10,3 +8,5 @@ node_modeles/*.*
 config/*.yml
 !.gitignore
 !*.example
+!bower_components/js-xlsx/jszip.js
+!bower_components/js-xlsx/xlsx.js

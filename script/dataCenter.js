@@ -46,5 +46,5 @@ valera.require([
                 fail && fail(error);
             });
         };
-    }
+    };
 });
