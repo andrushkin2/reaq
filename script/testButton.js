@@ -7,18 +7,30 @@ valera.require([
     "use strict";
 
     valera.extends.testButton = function(parent, insertBefore){
-        var footer, buttonOk, switcher,
+        var footer, buttonOk, switcher, timer,
             buttonText = "Ответить",
+            lastTime = document.querySelector(".lastTime"),
+            lastTimeCont = document.querySelector(".lastTimeCont"),
             createFooterCont = function(){
                 footer = valera.createElement("footer", {}, {}, !insertBefore? parent : null);
                 insertBefore && parent.insertBefore(footer, insertBefore);
             },
             createButton = function(){
-                buttonOk = valera.createElement("button", {
+                var div = valera.createElement("div", {
+                    class: "buttonParent"
+                }, null, footer),
+                    text;
+                text = valera.createElement("button", {
                     class: "button"
+                }, null, div);
+                timer = valera.createElement("button", {
+                    class: "button timer"
+                }, null, div);
+                buttonOk = valera.createElement("button", {
+                    class: "button text"
                 }, {
                     innerHTML: buttonText
-                }, footer);
+                }, div);
             },
             createElements = function(){
                 !footer && createFooterCont();
@@ -28,12 +40,26 @@ valera.require([
                 }
                 switcher = switcher || valera.extends.questionsSwitcher(parent, footer);
             },
+            timerToNext,
+            secondsToNext,
             clickEvent = function(e){
                 e && e.preventDefault();
+                valera.removeClass(timer, "active");
                 index++;
                 index - 1 > -1 && answers.push(switcher.getState());
+                secondsToNext = 30;
+                timerToNext && clearInterval(timerToNext);
                 if (switcher && data[index]){
                     switcher.setState(data[index]);
+                    timerToNext = setInterval(function(){
+                        secondsToNext--;
+                        if(secondsToNext){
+                            valera.addClass(timer, "active");
+                            lastTime.innerHTML = secondsToNext;
+                        } else {
+                            clickEvent();
+                        }
+                    }, 1000);
                 } else {
                     callbackFunc && callbackFunc(answers);
                 }

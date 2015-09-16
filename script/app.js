@@ -49,10 +49,10 @@
             }
             return res;
         },
-        isHaveClassList = !!("classList" in doc.documentElement
-        && doc.documentElement.classList.add
-        && doc.documentElement.classList.remove
-        && doc.documentElement.classList.contains),
+        isHaveClassList = !!("classList" in doc.documentElement &&
+        doc.documentElement.classList.add &&
+        doc.documentElement.classList.remove &&
+        doc.documentElement.classList.contains),
         addClass = (function () {
             return (isHaveClassList) ? function (element, className) {
                 element && element.classList.add(className);

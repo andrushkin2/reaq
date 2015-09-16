@@ -45,6 +45,9 @@ gulp.task("reloadPage", function() {
 gulp.task("default", ["clean"], function() {
     gulp.start("styles", "scripts");
 });
+gulp.task("run", ["clean"], function(){
+    gulp.start("styles", "scripts");
+});
 
 gulp.task("watch", function() {
     livereload.listen();

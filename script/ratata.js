@@ -15,7 +15,9 @@ valera.require([
         var startButton = document.querySelector(".central_button"),
             middleCont = document.querySelector(".middle_cont"),
             centralText = document.querySelector(".central_text"),
+            qaLogo = centralText.querySelector(".qaLogo"),
             testsCont = document.querySelector(".tests_cont"),
+            lastTime = document.querySelector(".lastTimeCont"),
             testManager,
             report = valera.extends.report(testsCont),
             startTest = function(isStart){
@@ -25,6 +27,7 @@ valera.require([
                 valera[!isStart? add : del](document.body, "inActive");
                 valera[!isStart? del : add](startButton, "active");
                 valera[!isStart? add : del](testsCont, "show");
+                valera[!isStart? add : del](lastTime, "show");
                 if (report){
                     report.reset();
                     report.hide();
@@ -49,10 +52,10 @@ valera.require([
             startTest(false);
 
             var dataCenter = valera.extends.dataCenter();
-            centralText.innerHTML = "QAer\n\rLoading...";
+            qaLogo.innerHTML = "QAer\n\rLoading...";
             dataCenter("https://googledrive.com/host/0BxKB0KqpArG9R3l3c1Y3aUdQTVU/FirstLevelTest.xlsx", function(data){
                 testManager = valera.extends.testButton(testsCont);
-                centralText.innerHTML = "QAer";
+                qaLogo.innerHTML = "QAer";
                 testManager.start(valera.extends.dataSpliter(data, 25), callback);
             }, function(e){
                 debugger;

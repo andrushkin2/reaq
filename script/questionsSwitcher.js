@@ -64,6 +64,6 @@ valera.require([
                 return containers[activeIndex].parser.getState();
             },
             destroy: destroy
-        }
-    }
+        };
+    };
 });

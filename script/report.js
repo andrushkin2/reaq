@@ -7,6 +7,7 @@ valera.require([], function() {
     valera.extends.report = function(parent){
         var createElement = valera.createElement,
             statesProp = "states",
+            resultText = "Правильных ответов {0} из {1}.<br/>Процент правильных ответов: {2}%",
             questionAmount = 0,
             rightQuestionsAmount = 0,
             mainCont = createElement("div", {
@@ -105,7 +106,7 @@ valera.require([], function() {
                 for (i = 0; i < len; i++){
                     createResultBlock(results[i]);
                 }
-                createHeader("Правильных ответов {0} из {1}.<br/>Процент правильных ответов: {2}%".replace("{0}", rightQuestionsAmount).replace("{1}", questionAmount).replace("{2}", Math.round(rightQuestionsAmount/questionAmount*100)), resultsBlock);
+                createHeader(resultText.replace("{0}", rightQuestionsAmount).replace("{1}", questionAmount).replace("{2}", Math.round(rightQuestionsAmount/questionAmount*100)), resultsBlock);
             },
             showOrHide = function(isShow){
                 mainCont.style.display = isShow? "block" : "none";
