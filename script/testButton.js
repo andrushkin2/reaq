@@ -70,9 +70,9 @@ valera.require([
                 answers = [];
                 callbackFunc = null;
                 index = -1;
-                if (buttonOk){
+                if (buttonOk && buttonOk.parentNode){
                     buttonOk.removeEventListener("click", clickEvent, false);
-                    footer && footer.removeChild(buttonOk);
+                    footer && footer.removeChild(buttonOk.parentNode);
                 }
                 footer && parent && parent.removeChild(footer);
                 switcher && switcher.destroy();
