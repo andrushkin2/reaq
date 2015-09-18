@@ -7,6 +7,15 @@ bower_components/js-xlsx/*
 node_modules/*/
 !node_modules/gulp
 !node_modules/gulp-serve
+!node_modules/gulp-less
+!node_modules/gulp-autoprefixer
+!node_modules/gulp-minify-css
+!node_modules/gulp-uglify
+!node_modules/gulp-rename
+!node_modules/gulp-notify
+!node_modules/gulp-livereload
+!node_modules/gulp-sync
+!node_modules/del
 config/*.yml
 !.gitignore
 !*.example
