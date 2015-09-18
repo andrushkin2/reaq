@@ -103,8 +103,8 @@ input[type="submit"] {
   background: -webkit-gradient(linear, left top, right top, from(#225a90), to(#1b892f));
   background: -webkit-linear-gradient(left, #225a90, #1b892f);
   background: linear-gradient(to right, #225a90, #1b892f);
-  -webkit-transition: all 29s 0s linear;
-          transition: all 29s 0s linear;
+  -webkit-transition: all 89s 0s linear;
+          transition: all 89s 0s linear;
   width: 100%;
 }
 .buttonParent .text {

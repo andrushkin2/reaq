@@ -27,7 +27,6 @@ valera.require([
                 valera[!isStart? add : del](document.body, "inActive");
                 valera[!isStart? del : add](startButton, "active");
                 valera[!isStart? add : del](testsCont, "show");
-                valera[!isStart? add : del](lastTime, "show");
                 if (report){
                     report.reset();
                     report.hide();
@@ -41,7 +40,7 @@ valera.require([
             },
             callback = function(data){
                 testManager && testManager.destroy();
-                debugger;
+                valera.removeClass(lastTime, "show");
                 if(report){
                     report.show();
                     report.setOptions(data);
@@ -53,10 +52,11 @@ valera.require([
 
             var dataCenter = valera.extends.dataCenter();
             qaLogo.innerHTML = "QAer\n\rLoading...";
-            dataCenter("https://googledrive.com/host/0BxKB0KqpArG9R3l3c1Y3aUdQTVU/FirstLevelTest.xlsx", function(data){
+            dataCenter("./data/file.xlsx", function(data){
+                valera.addClass(lastTime, "show");
                 testManager = valera.extends.testButton(testsCont);
                 qaLogo.innerHTML = "QAer";
-                testManager.start(valera.extends.dataSpliter(data, 25), callback);
+                testManager.start(valera.extends.dataSpliter(data, 20), callback);
             }, function(e){
                 debugger;
             });

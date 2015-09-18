@@ -2,14 +2,12 @@ var gulp = require("gulp"),
     less = require("gulp-less"),
     autoprefixer = require("gulp-autoprefixer"),
     minifycss = require("gulp-minify-css"),
-    jshint = require("gulp-jshint"),
     uglify = require("gulp-uglify"),
     rename = require("gulp-rename"),
-    concat = require("gulp-concat"),
     notify = require("gulp-notify"),
-    cache = require("gulp-cache"),
     livereload = require("gulp-livereload"),
-    gulpsync = require('gulp-sync')(gulp)
+    gulpsync = require('gulp-sync')(gulp),
+    serve = require('gulp-serve'),
     del = require("del");
 
 gulp.task("styles", function() {
@@ -42,9 +40,12 @@ gulp.task("reloadPage", function() {
     livereload.reload();
 });
 
-gulp.task("default", ["clean"], function() {
-    gulp.start("styles", "scripts");
-});
+gulp.task('serve', serve({
+    root: ['.'],
+    port: 3000
+}));
+
+gulp.task("default", ["serve"], function(){});
 gulp.task("run", ["clean"], function(){
     gulp.start("styles", "scripts");
 });

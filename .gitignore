@@ -1,11 +1,12 @@
 .*
 ~*
-node_modules
 npm-debug.log
 bower_components/*
 !bower_components/js-xlsx
 bower_components/js-xlsx/*
-node_modeles/*.*
+node_modules/*/
+!node_modules/gulp
+!node_modules/gulp-serve
 config/*.yml
 !.gitignore
 !*.example

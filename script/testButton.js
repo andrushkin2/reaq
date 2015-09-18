@@ -47,7 +47,7 @@ valera.require([
                 valera.removeClass(timer, "active");
                 index++;
                 index - 1 > -1 && answers.push(switcher.getState());
-                secondsToNext = 30;
+                secondsToNext = 90;
                 timerToNext && clearInterval(timerToNext);
                 if (switcher && data[index]){
                     switcher.setState(data[index]);
@@ -63,7 +63,6 @@ valera.require([
                 } else {
                     callbackFunc && callbackFunc(answers);
                 }
-                // todo: add logic for working with data step by step
             },
             destroy = function(){
                 data = [];

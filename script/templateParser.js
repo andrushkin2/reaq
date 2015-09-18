@@ -4,13 +4,14 @@
 valera.require([], function(){
     "use strict";
 
-    valera.extends.templateParser = function(parentElement){
+     valera.extends.templateParser = function(parentElement){
         var statesProp = "states",
-            options = {
+            defOptions = {
                 text: "",
                 answers: [],
                 trueFalseIndexes: []
             },
+            options,
             header,
             answers,
             answerArr = [],
@@ -69,8 +70,8 @@ valera.require([], function(){
             destroy = function(){
                 header && parentElement.removeChild(header);
                 answers && parentElement.removeChild(answers);
-                header = null;
-                answers = null;
+                header = answers = null;
+                answerArr = [];
             },
             createElements = function(){
                 !header && createQuestionCont();
@@ -79,7 +80,7 @@ valera.require([], function(){
 
         return {
             setState: function(newState){
-                options = valera.extend(true, {}, options, newState);
+                options = valera.extend(true, {}, defOptions, newState);
                 destroy();
                 createElements();
                 header.innerHTML = options.question;
