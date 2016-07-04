@@ -7,7 +7,7 @@ valera.require([], function() {
     valera.extends.report = function(parent){
         var createElement = valera.createElement,
             statesProp = "states",
-            resultText = "Правильных ответов {0} из {1}.<br/>Процент правильных ответов: {2}%",
+            resultText = "Правильных ответов {0} из {1}<br/>Процент правильных ответов: {2}%",
             questionAmount = 0,
             rightQuestionsAmount = 0,
             mainCont = createElement("div", {
@@ -76,14 +76,35 @@ valera.require([], function() {
                 }
                 return true;
             },
+            getPercentOfAnswer = function(realAnswers, userAnswers) {
+                var len = realAnswers.length,
+                    i, persent = 0,
+                    realAnswer,
+                    trueAnswersCount = 0;
+                for (i = 0; i < len; i++) {
+                    realAnswer = realAnswers[i];
+                    if (realAnswer === true) {
+                        trueAnswersCount++;
+                        userAnswers[i] === realAnswer && (persent++);
+                    } else {
+                        userAnswers[i] === true && (persent--);
+                    }
+                }
+                if (persent < 0) {
+                    persent = 0;
+                }
+                return persent / trueAnswersCount;
+            },
             createResultBlock = function(option){
                 var block = createElement("div", {
                         class: "reportBlock"
                     }, null, mainCont),
-                    questions,
+                    questions, persentOfTrueAnswers,
                     i, len = option.answers.length;
                 createHeader(option.question, block);
                 if (!compareStates(option[statesProp], option.trueFalseIndexes)){
+                    persentOfTrueAnswers = getPercentOfAnswer(option.trueFalseIndexes, option[statesProp]);
+                    rightQuestionsAmount += persentOfTrueAnswers;
                     questions = createAnswerBlock(block);
                     for (i = 0; i < len; i++){
                         answerContainer(option.answers[i], option.trueFalseIndexes[i], option[statesProp][i], questions);
@@ -106,7 +127,7 @@ valera.require([], function() {
                 for (i = 0; i < len; i++){
                     createResultBlock(results[i]);
                 }
-                createHeader(resultText.replace("{0}", rightQuestionsAmount).replace("{1}", questionAmount).replace("{2}", Math.round(rightQuestionsAmount/questionAmount*100)), resultsBlock);
+                createHeader(resultText.replace("{0}", parseFloat(parseFloat(rightQuestionsAmount).toFixed(3))).replace("{1}", questionAmount).replace("{2}", Math.round(rightQuestionsAmount / questionAmount * 100)), resultsBlock);
             },
             showOrHide = function(isShow){
                 mainCont.style.display = isShow? "block" : "none";
